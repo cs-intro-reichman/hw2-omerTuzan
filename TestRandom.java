@@ -2,5 +2,51 @@
 public  class  TestRandom {
 	public static void main(String[]  args) {
 	    // Replace this comment with your code
+		String OResult = "";
+		String Ratio = ""; // ratio string output
+
+		
+		int GCount = 0; // greater than 0.5 count
+		int LECount = 0; // lower or equal to 0.5 count
+
+		double DRatio = 0; // ratio in double for calculation
+		double RandNum = 0;
+
+		int RandAmount = Integer.parseInt(args[0]);
+
+		// main program counts for greater or equal less to 0.5 
+		for (int i = 1; i <= RandAmount; i++) {
+			RandNum = Math.random();
+			if (RandNum > 0.5) {
+				GCount++;
+			} else {
+				LECount++;
+			}
+		}
+
+		// if lower and equal count is 0 than there will be no ratio, if its not, it will calculate the ratio
+		if (LECount == 0) {
+			Ratio = null;
+		} else {
+			DRatio = (double)GCount/(double)LECount;
+			Ratio = "" + DRatio;
+		}
+
+		// if there is ratio it will output with the ratio, if not it will output without
+		if (Ratio != null) {
+			OResult = String.format("> 0.5: %s times%n" + //
+						"<= 0.5: %s times%n" + //
+						"Ratio: %s", GCount, LECount, Ratio);
+		} else {
+			OResult = String.format("> 0.5: %s times%n" + //
+						"<= 0.5: %s times", GCount, LECount);
+		}
+
+		System.out.println(OResult);
+		
+
+		
+
+		
 	}
 }
